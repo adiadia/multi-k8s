@@ -25,21 +25,21 @@ jobs:
 
       - name: Build frontend Image and run test
         run: |
-          docker build -t adiaditiwri/react-test -f ./client/Dockerfile.dev ./client,
+          docker build -t adiaditiwri/react-test -f ./client/Dockerfile.dev ./client
           docker run -e CI=true adiaditiwri/react-test npm test
 
       - name: Building all image
         run: |
-          docker build -t adiaditiwri/multi-client ./client,
-          docker build -t adiaditiwri/multi-nginx ./nginx,
-          docker build -t adiaditiwri/multi-server ./server,
+          docker build -t adiaditiwri/multi-client ./client
+          docker build -t adiaditiwri/multi-nginx ./nginx
+          docker build -t adiaditiwri/multi-server ./server
           docker build -t adiaditiwri/multi-worker ./worker
 
       - name: Pushing all the image
         run: |
-          docker push adiaditiwri/multi-client,
-          docker push adiaditiwri/multi-nginx,
-          docker push adiaditiwri/multi-server,
+          docker push adiaditiwri/multi-client
+          docker push adiaditiwri/multi-nginx
+          docker push adiaditiwri/multi-server
           docker push adiaditiwri/multi-worker
 
       # - name: Generate deployment package
